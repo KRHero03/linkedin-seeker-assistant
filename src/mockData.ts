@@ -1,4 +1,4 @@
-import { User, OutreachConfig, Recruiter, Conversation, Message, Lead, CreditPackage, AgentSettings } from './types';
+import type { User, OutreachConfig, Recruiter, Conversation, Message, Lead, CreditPackage, AgentSettings } from './types';
 
 export const mockUser: User = {
   id: '1',

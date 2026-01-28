@@ -17,7 +17,7 @@ import {
   Eye,
   ThumbsUp,
 } from 'lucide-react';
-import { mockRecruiters, mockConversations, mockLeads, mockOutreachConfigs } from '../mockData';
+import { mockRecruiters, mockLeads, mockOutreachConfigs } from '../mockData';
 
 interface DashboardProps {
   onStartOutreach: () => void;
@@ -91,7 +91,7 @@ export default function Dashboard({ onStartOutreach }: DashboardProps) {
     >
       {/* Stats Grid */}
       <div className="grid grid-cols-4 gap-4">
-        {stats.map((stat, index) => {
+        {stats.map((stat) => {
           const Icon = stat.icon;
           return (
             <motion.div

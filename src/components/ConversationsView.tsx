@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   MessageSquare,
   Send,
@@ -17,7 +17,7 @@ import {
   Check,
 } from 'lucide-react';
 import { mockConversations } from '../mockData';
-import { Conversation } from '../types';
+import type { Conversation } from '../types';
 
 export default function ConversationsView() {
   const [selectedConversation, setSelectedConversation] = useState<Conversation | null>(mockConversations[0]);

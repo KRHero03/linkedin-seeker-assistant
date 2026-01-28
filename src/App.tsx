@@ -20,7 +20,7 @@ import {
   X,
   Crown,
 } from 'lucide-react';
-import { ViewType } from './types';
+import type { ViewType } from './types';
 import { mockUser } from './mockData';
 import Dashboard from './components/Dashboard';
 import OutreachWizard from './components/OutreachWizard';

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  Sparkles,
   Bot,
   Clock,
   Shield,
@@ -12,7 +11,6 @@ import {
   Save,
   RefreshCw,
   Check,
-  ChevronRight,
 } from 'lucide-react';
 import { mockAgentSettings } from '../mockData';
 

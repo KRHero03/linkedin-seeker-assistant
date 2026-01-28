@@ -13,8 +13,6 @@ import {
   TrendingUp,
   Filter,
   ArrowUpDown,
-  Phone,
-  Mail,
 } from 'lucide-react';
 import { mockLeads } from '../mockData';
 
