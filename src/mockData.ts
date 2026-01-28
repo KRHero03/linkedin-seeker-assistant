@@ -1,0 +1,275 @@
+import { User, OutreachConfig, Recruiter, Conversation, Message, Lead, CreditPackage, AgentSettings } from './types';
+
+export const mockUser: User = {
+  id: '1',
+  name: 'Alex Johnson',
+  email: 'alex.johnson@email.com',
+  avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+  isPremiumPlus: true,
+  credits: 47,
+  maxCredits: 100,
+};
+
+export const mockRecruiters: Recruiter[] = [
+  {
+    id: 'r1',
+    name: 'Sarah Chen',
+    title: 'Senior Technical Recruiter',
+    company: 'Google',
+    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
+    location: 'San Francisco, CA',
+    status: 'lead',
+    connectionSentAt: new Date('2026-01-25'),
+    lastActivity: new Date('2026-01-28'),
+    matchScore: 95,
+  },
+  {
+    id: 'r2',
+    name: 'Michael Roberts',
+    title: 'Engineering Recruiter',
+    company: 'Meta',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+    location: 'Menlo Park, CA',
+    status: 'responded',
+    connectionSentAt: new Date('2026-01-24'),
+    lastActivity: new Date('2026-01-27'),
+    matchScore: 88,
+  },
+  {
+    id: 'r3',
+    name: 'Emily Watson',
+    title: 'Talent Acquisition Partner',
+    company: 'Netflix',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+    location: 'Los Gatos, CA',
+    status: 'connected',
+    connectionSentAt: new Date('2026-01-26'),
+    lastActivity: new Date('2026-01-27'),
+    matchScore: 82,
+  },
+  {
+    id: 'r4',
+    name: 'David Kim',
+    title: 'Technical Sourcer',
+    company: 'Apple',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face',
+    location: 'Cupertino, CA',
+    status: 'pending',
+    connectionSentAt: new Date('2026-01-27'),
+    matchScore: 79,
+  },
+  {
+    id: 'r5',
+    name: 'Jessica Martinez',
+    title: 'Head of Recruiting',
+    company: 'Stripe',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face',
+    location: 'San Francisco, CA',
+    status: 'cooldown',
+    connectionSentAt: new Date('2026-01-15'),
+    lastActivity: new Date('2026-01-20'),
+    matchScore: 91,
+  },
+  {
+    id: 'r6',
+    name: 'James Wilson',
+    title: 'Recruiting Lead',
+    company: 'Amazon',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face',
+    location: 'Seattle, WA',
+    status: 'declined',
+    connectionSentAt: new Date('2026-01-20'),
+    lastActivity: new Date('2026-01-21'),
+    matchScore: 75,
+  },
+];
+
+export const mockMessages: Message[] = [
+  {
+    id: 'm1',
+    senderId: 'agent',
+    senderName: 'Seeker Assistant',
+    senderAvatar: '',
+    content: "Hi Sarah! I noticed you're hiring Senior Software Engineers at Google. I'm Alex, a Full-Stack Engineer with 5+ years of experience in React, Node.js, and cloud technologies. I'd love to connect and learn more about the opportunities at Google!",
+    timestamp: new Date('2026-01-25T10:30:00'),
+    isAgent: true,
+  },
+  {
+    id: 'm2',
+    senderId: 'r1',
+    senderName: 'Sarah Chen',
+    senderAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
+    content: "Hi Alex! Thanks for reaching out. Your background looks interesting! We do have several senior engineering positions open. What specific areas are you most interested in?",
+    timestamp: new Date('2026-01-25T14:15:00'),
+    isAgent: false,
+  },
+  {
+    id: 'm3',
+    senderId: 'agent',
+    senderName: 'Seeker Assistant',
+    senderAvatar: '',
+    content: "Thank you for your response, Sarah! I'm particularly interested in full-stack roles working on consumer-facing products. I have experience with large-scale distributed systems and have led teams on complex feature launches. Would there be any positions that align with this background?",
+    timestamp: new Date('2026-01-25T14:45:00'),
+    isAgent: true,
+  },
+  {
+    id: 'm4',
+    senderId: 'r1',
+    senderName: 'Sarah Chen',
+    senderAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face',
+    content: "That sounds like a great fit! We have positions on the Google Search and Google Maps teams that might interest you. Would you be available for a brief call this week to discuss further?",
+    timestamp: new Date('2026-01-26T09:30:00'),
+    isAgent: false,
+  },
+  {
+    id: 'm5',
+    senderId: 'agent',
+    senderName: 'Seeker Assistant',
+    senderAvatar: '',
+    content: "Both of those sound exciting! I'd definitely be interested in learning more. Let me check with Alex on availability and get back to you shortly. In the meantime, is there any additional information about the roles you could share?",
+    timestamp: new Date('2026-01-26T10:00:00'),
+    isAgent: true,
+  },
+];
+
+export const mockConversations: Conversation[] = [
+  {
+    id: 'c1',
+    recruiterId: 'r1',
+    recruiter: mockRecruiters[0],
+    messages: mockMessages,
+    status: 'converted',
+    summary: 'Sarah from Google is interested in Alex\'s profile. She has positions open on Google Search and Maps teams. A call has been requested.',
+    keyPoints: [
+      'Senior engineering positions available',
+      'Interested in full-stack background',
+      'Google Search and Maps teams mentioned',
+      'Call requested for this week',
+    ],
+    nextSteps: [
+      'Confirm availability for call',
+      'Prepare questions about team culture',
+      'Review Google\'s recent product launches',
+    ],
+    sentiment: 'positive',
+  },
+  {
+    id: 'c2',
+    recruiterId: 'r2',
+    recruiter: mockRecruiters[1],
+    messages: [
+      {
+        id: 'm6',
+        senderId: 'agent',
+        senderName: 'Seeker Assistant',
+        senderAvatar: '',
+        content: "Hi Michael! I came across your profile and saw you're recruiting for engineering roles at Meta. I'm Alex, a Full-Stack Engineer passionate about building products that impact billions of users. Would love to connect!",
+        timestamp: new Date('2026-01-24T11:00:00'),
+        isAgent: true,
+      },
+      {
+        id: 'm7',
+        senderId: 'r2',
+        senderName: 'Michael Roberts',
+        senderAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+        content: "Hey Alex! Thanks for connecting. We're always looking for talented engineers. What's your experience with large-scale systems?",
+        timestamp: new Date('2026-01-27T16:30:00'),
+        isAgent: false,
+      },
+    ],
+    status: 'active',
+    summary: 'Initial contact made with Meta recruiter. They\'re interested in large-scale systems experience.',
+    keyPoints: [
+      'Recruiter interested in scaling experience',
+      'Conversation just started',
+    ],
+    nextSteps: [
+      'Respond about large-scale systems experience',
+      'Mention specific projects and metrics',
+    ],
+    sentiment: 'positive',
+  },
+];
+
+export const mockLeads: Lead[] = [
+  {
+    id: 'l1',
+    recruiter: mockRecruiters[0],
+    conversation: mockConversations[0],
+    convertedAt: new Date('2026-01-26T10:00:00'),
+    notes: 'Strong interest from Google. Senior positions available on Search and Maps teams. Call requested.',
+    priority: 'high',
+  },
+];
+
+export const mockOutreachConfigs: OutreachConfig[] = [
+  {
+    id: 'o1',
+    name: 'FAANG Companies - Senior Engineer',
+    status: 'active',
+    targetCountries: ['United States', 'Canada'],
+    targetCompanies: ['Google', 'Meta', 'Apple', 'Amazon', 'Netflix', 'Microsoft'],
+    targetRoles: ['Senior Software Engineer', 'Staff Engineer', 'Tech Lead'],
+    targetSkills: ['React', 'Node.js', 'TypeScript', 'Python', 'AWS', 'System Design'],
+    resumeName: 'Alex_Johnson_Resume_2026.pdf',
+    qualifications: 'MS Computer Science, 5+ years experience, Previous FAANG experience at Meta',
+    customMessage: "Hi! I noticed you're hiring for engineering roles. I'm a passionate Full-Stack Engineer with experience building products at scale. Would love to connect and learn about opportunities!",
+    temperature: 0.7,
+    createdAt: new Date('2026-01-20'),
+  },
+];
+
+export const mockCreditPackages: CreditPackage[] = [
+  {
+    id: 'cp1',
+    name: 'Starter',
+    credits: 25,
+    price: 9.99,
+    features: [
+      '25 outreach credits',
+      'Basic AI responses',
+      'Email support',
+    ],
+  },
+  {
+    id: 'cp2',
+    name: 'Professional',
+    credits: 100,
+    price: 29.99,
+    popular: true,
+    features: [
+      '100 outreach credits',
+      'Advanced AI responses',
+      'Priority support',
+      'Conversation insights',
+      'Lead scoring',
+    ],
+  },
+  {
+    id: 'cp3',
+    name: 'Enterprise',
+    credits: 500,
+    price: 99.99,
+    features: [
+      '500 outreach credits',
+      'Premium AI responses',
+      'Dedicated support',
+      'Advanced analytics',
+      'Custom messaging templates',
+      'API access',
+    ],
+  },
+];
+
+export const mockAgentSettings: AgentSettings = {
+  temperature: 0.7,
+  autoRespond: true,
+  workingHours: {
+    start: '09:00',
+    end: '18:00',
+    timezone: 'America/Los_Angeles',
+  },
+  maxDailyOutreach: 10,
+  cooldownPeriodDays: 30,
+  allowAgentContact: true,
+};

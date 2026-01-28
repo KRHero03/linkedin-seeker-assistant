@@ -1,0 +1,215 @@
+/* Import Google Fonts - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: #F4F2EE;
+  min-height: 100vh;
+  color: #191919;
+}
+
+/* Custom scrollbar - LinkedIn style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F4F2EE;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #BBBAB8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666666;
+}
+
+/* LinkedIn Card style */
+.li-card {
+  background: #FFFFFF;
+  border: 1px solid #E0DFDC;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.li-card:hover {
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.08);
+}
+
+/* LinkedIn Button styles */
+.li-btn-primary {
+  background: #0A66C2;
+  color: white;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 24px;
+  transition: all 0.2s;
+}
+
+.li-btn-primary:hover {
+  background: #004182;
+}
+
+.li-btn-secondary {
+  background: transparent;
+  color: #0A66C2;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 24px;
+  border: 1px solid #0A66C2;
+  transition: all 0.2s;
+}
+
+.li-btn-secondary:hover {
+  background: rgba(10, 102, 194, 0.08);
+  border-color: #004182;
+}
+
+/* Premium badge */
+.li-premium-badge {
+  background: linear-gradient(135deg, #F8C77E 0%, #A68B5B 100%);
+  color: #5C4B1F;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+/* Premium background */
+.li-premium-bg {
+  background: linear-gradient(135deg, #FFF9F0 0%, #FFF5E6 100%);
+  border: 1px solid #F8C77E;
+}
+
+/* Gradient text for premium */
+.gradient-text-premium {
+  background: linear-gradient(135deg, #A68B5B 0%, #8B7355 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* LinkedIn Blue gradient */
+.li-blue-gradient {
+  background: linear-gradient(135deg, #0A66C2 0%, #004182 100%);
+}
+
+/* Pulse animation for notifications */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(10, 102, 194, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(10, 102, 194, 0);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: all 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.12);
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #F4F2EE 0%, #E9E5DF 50%, #F4F2EE 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* LinkedIn-style input */
+.li-input {
+  background: #FFFFFF;
+  border: 1px solid #BBBAB8;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: all 0.2s;
+  color: #191919;
+}
+
+.li-input:focus {
+  outline: none;
+  border-color: #0A66C2;
+  box-shadow: 0 0 0 2px rgba(10, 102, 194, 0.2);
+}
+
+/* Fix for input fields with dark selection highlight */
+input[type="time"],
+input[type="number"],
+input[type="text"],
+select {
+  color: #191919;
+  background-color: #FFFFFF;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0);
+}
+
+/* Ensure inputs in dark contexts are readable */
+input::selection,
+textarea::selection {
+  background-color: rgba(10, 102, 194, 0.3);
+  color: #191919;
+}
+
+/* Tooltip */
+.li-tooltip {
+  background: #191919;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Status indicators */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-online {
+  background: #057642;
+}
+
+.status-away {
+  background: #915907;
+}
+
+.status-offline {
+  background: #666666;
+}
